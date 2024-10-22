@@ -8,24 +8,20 @@ import {
   output,
 } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
-
-type User = {
-  id: string;
-  avatar: string;
-  name: string;
-};
+import { User } from './user.model';
+import { CardComponent } from "../shared/card/card.component";
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
 export class UserComponent {
   // avatar = input.required<string>();  #signal use
   @Input({ required: true }) user!: User;
-
+  @Input ({required: true}) selected!: boolean;
   // select = output<string>();
   @Output() select = new EventEmitter();
 
